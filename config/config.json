@@ -1,0 +1,59 @@
+{
+  "server": {
+    "port": 8000,
+    "host": "0.0.0.0",
+    "reload": false
+  },
+  "active_db": "sqlite_main",
+  "databases": {
+    "sqlite_main": {
+      "type": "sqlite",
+      "path": "./data/app.db"
+    },
+    "postgres_main": {
+      "type": "postgresql",
+      "host": "localhost",
+      "port": 5432,
+      "database": "mydb",
+      "username": "postgres",
+      "password": "secret"
+    },
+    "mysql_main": {
+      "type": "mysql",
+      "host": "localhost",
+      "port": 3306,
+      "database": "mydb",
+      "username": "root",
+      "password": "secret"
+    },
+    "mongo_main": {
+      "type": "mongodb",
+      "uri": "mongodb://localhost:27017",
+      "database": "mydb"
+    }
+  },
+  "metadata_db": "sqlite_meta",
+  "sqlite_meta": {
+    "type": "sqlite",
+    "path": "./data/meta.db"
+  },
+  "default_schemas": {
+    "users": {
+      "id": {"type": "integer", "primary_key": true, "auto_increment": true},
+      "name": {"type": "text", "default": ""},
+      "email": {"type": "text", "default": ""},
+      "created_at": {"type": "datetime", "default": "now"}
+    },
+    "products": {
+      "id": {"type": "integer", "primary_key": true, "auto_increment": true},
+      "name": {"type": "text", "default": ""},
+      "price": {"type": "number", "default": 0.0},
+      "stock": {"type": "integer", "default": 0}
+    }
+  },
+  "security": {
+    "blocked_keywords": ["DROP", "TRUNCATE", "ALTER", "CREATE", "GRANT", "REVOKE", "EXEC", "EXECUTE", "xp_", "sp_"],
+    "max_result_rows": 10000,
+    "allow_raw_sql": true
+  }
+}
